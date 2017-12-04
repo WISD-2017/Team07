@@ -27,3 +27,9 @@ Route::get('/search/searchend', function () {
 Route::get('/search/searchpost', function () {
     return view('search.searchpost');
 });
+Route::get('/booking/bookingsearch', function () {
+    return view('bookingsearch');
+});
+Route::get('/booking/bookingcancel', function () {
+    return view('bookingcancel');
+});
