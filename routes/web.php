@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/aa/a1', function () {
     return view('aa.a1');
 });
+Route::get('/search/searchend', function () {
+    return view('search.searchend');
+});
