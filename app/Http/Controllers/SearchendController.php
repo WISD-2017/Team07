@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Ticketcar;
+use DB;
 use Illuminate\Http\Request;
 
 class SearchendController extends Controller
@@ -13,7 +14,19 @@ class SearchendController extends Controller
      */
     public function index()
     {
-        return View('/searchend');
+        //查詢票價
+        $sqlprice=DB::table('ticketcars')
+            ->join('price', function($join)
+            {
+                $join->on('ticketcars.start', '=', 'price.SID1')
+                    ->on('ticketcars.arrive', '=', 'price.SID2')
+                    ->select('price.price');
+            })
+            ->orderBy('created_at','DESC')->take(1)->get();
+        $pricedata = compact('sqlprice');
+
+        return View('/searchend')
+               ->with($pricedata);
     }
 
     /**
