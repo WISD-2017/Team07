@@ -73,7 +73,34 @@
                         <td align="center">發車時間</td>
                         <td align="center">前往訂票</td>
                     </tr>
+
+                @foreach($posts as $post)
+                    @if($post->start < $post->arrive)
+                        @foreach ($selectstanum1 as $selectstanum)
+                            @if($selectstanum->num===2)
+                                    <tr>
+                                        <td align="center"> {{$selectstanum->stationnumber}}</td>
+                                        <td align="center"> {{$selectstanum->detime}}</td>
+                                        <td align="center"><input class="button" type="submit" name="btticket" value="前往訂票"  style="height:32px;font-size:12px;line-height:3em;"></td>
+                                    </tr>
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
             <!--北上-->
+               @foreach($posts as $post)
+                   @if($post->start > $post->arrive)
+                        @foreach ($selectstanum2 as $selectstanum22)
+                            @if($selectstanum22->num===2)
+                                    <tr>
+                                        <td align="center"> {{$selectstanum22->stationnumber}}</td>
+                                        <td align="center"> {{$selectstanum22->detime}}</td>
+                                        <td align="center"><input class="button" type="submit" name="btticket" value="前往訂票"  style="height:32px;font-size:12px;line-height:3em;"></td>
+                                    </tr>
+                            @endif
+                        @endforeach
+                   @endif
+               @endforeach
 
 
                 </table>
