@@ -19,6 +19,10 @@ Route::get('/search', function () {
     return view('search');
 });
 
+
+Route::get('/searchend',['as' => 'searchend.index', 'uses' => 'SearchendController@index']);
+Route::post('/searchend',['as' => 'searchend.store', 'uses' => 'SearchendController@store']);
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
