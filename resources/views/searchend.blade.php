@@ -40,7 +40,9 @@
                 {{ csrf_field() }}
                 <table>
                     <td>
-                            <font color="#FF5511"><strong>★ 票價一張：元 ★</strong> </font>
+                        @foreach ($sqlprice as $sqlpric)
+                            <font color="#FF5511"><strong>★ 票價一張：{{$sqlpric->price }}元 ★</strong> </font>
+                        @endforeach
                     </td>
 
                     <td width="250px" height="30px" valign="top"><p>請選擇訂購數量</p>
