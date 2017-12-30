@@ -14,6 +14,10 @@ class SearchendController extends Controller
      */
     public function index()
     {
+        //查詢tests資料表資料
+        $posts=Ticketcar::orderBy('created_at','DESC')->take(1)->get();
+        $data=['posts'=>$posts];
+
         //查詢票價
         $sqlprice=DB::table('ticketcars')
             ->join('price', function($join)
@@ -25,8 +29,37 @@ class SearchendController extends Controller
             ->orderBy('created_at','DESC')->take(1)->get();
         $pricedata = compact('sqlprice');
 
+        //查詢車次
+        //南下
+        $selectstanum1 = DB::table('table 4')
+            ->select('stationnumber',DB::raw('count(*) as num'),'detime')
+            ->join('ticketcars', function($join)
+            {
+                $join->on('table 4.SID', '=', 'ticketcars.start' )
+                    ->orOn('table 4.SID', '=', 'ticketcars.arrive');
+            })
+            ->groupby('stationnumber')
+            ->get();
+
+        //北上
+        $selectstanum2 = DB::table('table 3')
+            ->select('stationnumber',DB::raw('count(*) as num'),'detime')
+            ->join('ticketcars', function($join)
+            {
+                $join->on('table 3.SID', '=', 'ticketcars.start' )
+                    ->orOn('table 3.SID', '=', 'ticketcars.arrive');
+            })
+            ->groupby('stationnumber')
+            ->get();
+
+        $selectstanumdata1 = compact('selectstanum1');
+        $selectstanumdata2 = compact('selectstanum2');
+
         return View('/searchend')
-               ->with($pricedata);
+               ->with($data)
+               ->with($pricedata)
+               ->with($selectstanumdata1)
+               ->with($selectstanumdata2);
     }
 
     /**
