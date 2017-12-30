@@ -15,10 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search', function () {
-    return view('search');
-});
-
+Route::get('/search',['as' => 'search.index', 'uses' => 'SearchController@index']);
 
 Route::get('/searchend',['as' => 'searchend.index', 'uses' => 'SearchendController@index']);
 Route::post('/searchend',['as' => 'searchend.store', 'uses' => 'SearchendController@store']);
