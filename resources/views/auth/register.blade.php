@@ -19,11 +19,6 @@
             <div class="inner">
 
                 <!-- Logo --><!-- Nav -->
-                <nav>
-                    <ul>
-                        <li><a href="#menu">Menu</a></li>
-                    </ul>
-                </nav>
 
             </div>
         </header>
