@@ -23,3 +23,7 @@ Route::post('/searchend',['as' => 'searchend.store', 'uses' => 'SearchendControl
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
