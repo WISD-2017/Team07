@@ -23,7 +23,11 @@ Route::post('/searchend',['as' => 'searchend.store', 'uses' => 'SearchendControl
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('auth/login', 'LoginController@getLogin');
+Route::post('auth/login', 'LoginController@postLogin');
+Route::get('auth/logout', 'LoginController@getLogout');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/auth/register', 'RegisterController@getRegister');
+Route::post('auth/register', 'RegisterController@postRegister');
+Route::get('auth/register', 'RegisterController@storeRegister');
