@@ -53,14 +53,7 @@
     <header id="header">
         <div class="inner">
 
-            <!-- Logo --><!-- Nav -->
-            <nav>
-                <ul>
-                    <li><a href="#menu">Menu</a></li>
-                </ul>
-            </nav>
 
-        </div>
     </header>
 
     <!-- Menu -->
@@ -114,7 +107,7 @@
     <section>
         <table width="1200" class=table7_3>
             <tr>
-                <th>年</th><th>月</th><th>日</th><th>車次</th><th>出發時間</th><th>起站→</th><th>→終點</th><th>您所訂購的票數</th><th>單張票價</th><th>合計金額</th>
+                <th>年</th><th>月</th><th>日</th><th>車次</th><th>出發時間</th><th>起站</th><th>終點</th><th>您所訂購的票數</th><th>單張票價</th><th>合計金額</th>
             </tr>
             <tr>
 
@@ -153,7 +146,7 @@
                     @endforeach
             </tr>
         </table>
-      
+
 
 
                 <th>
