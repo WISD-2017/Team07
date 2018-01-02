@@ -20,6 +20,10 @@ Route::get('/search',['as' => 'search.index', 'uses' => 'SearchController@index'
 Route::get('/searchend',['as' => 'searchend.index', 'uses' => 'SearchendController@index']);
 Route::post('/searchend',['as' => 'searchend.store', 'uses' => 'SearchendController@store']);
 
+Route::get('/ticket',['as' => 'ticket.index', 'uses' => 'TicketController@index']);
+Route::post('/ticket',['as' => 'ticket.store', 'uses' => 'TicketController@store']);
+
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
