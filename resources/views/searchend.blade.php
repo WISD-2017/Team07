@@ -41,7 +41,7 @@
                 @foreach($posts as $post)
                     <td> <input  type="hidden" name="year" value="{{$post->year}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->year}}年</td>
                     <td><input  type="hidden" name="month" value="{{$post->month}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->month}}月</td>
-                    <td><input  type="hidden" name="month" value="{{$post->day}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->day}}日</td>
+                    <td><input  type="hidden" name="day" value="{{$post->day}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->day}}日</td>
                     <input  type="hidden" name="start" value="{{$post->start}}"  style="height:32px;font-size:12px;line-height:3em;">
                     <input  type="hidden" name="arrive" value="{{$post->arrive}}"  style="height:32px;font-size:12px;line-height:3em;">
 
