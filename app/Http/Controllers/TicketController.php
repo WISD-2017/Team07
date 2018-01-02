@@ -13,7 +13,10 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $posts=Test::orderBy('created_at','DESC')->take(1)->get();
+        $data=['posts'=>$posts];
+        return View('/ticket')
+            ->with($data);
     }
 
     /**
@@ -34,7 +37,8 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ticket::create($request->all());
+        return redirect()->route('ticket.index');
     }
 
     /**
