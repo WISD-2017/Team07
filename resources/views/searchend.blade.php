@@ -36,8 +36,17 @@
     <div id="footer" style="background-color:#ffffff">
         <div class="inner">
 
-            <form action="/" method="post">
+            <form action="/ticket" method="post">
                 {{ csrf_field() }}
+                @foreach($posts as $post)
+                    <td> <input  type="hidden" name="year" value="{{$post->year}}"  style="height:32px;font-size:12px;line-height:3em;">年{{$post->year}}</td>
+                    <td><input  type="hidden" name="month" value="{{$post->month}}"  style="height:32px;font-size:12px;line-height:3em;">月{{$post->month}}</td>
+                    <td><input  type="hidden" name="day" value="{{$post->day}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->day}}</td>
+                    <input  type="hidden" name="start" value="{{$post->start}}"  style="height:32px;font-size:12px;line-height:3em;">
+                    <input  type="hidden" name="arrive" value="{{$post->arrive}}"  style="height:32px;font-size:12px;line-height:3em;">
+
+                @endforeach
+
                 <table>
                     <td>
                         @foreach ($sqlprice as $sqlpric)
@@ -47,7 +56,7 @@
 
                     <td width="250px" height="30px" valign="top"><p>請選擇訂購數量</p>
 
-                        <select name="ticketnum">
+                        <select name="quantity">
                             @php
                                 for($i=1;$i<=10;$i++){
                             @endphp
@@ -59,7 +68,7 @@
 
                     </td>
                 </table>
-            </form>
+
 
         </div>
     </div>
@@ -79,8 +88,8 @@
                         @foreach ($selectstanum1 as $selectstanum)
                             @if($selectstanum->num===2)
                                     <tr>
-                                        <td align="center"> {{$selectstanum->stationnumber}}</td>
-                                        <td align="center"> {{$selectstanum->detime}}</td>
+                                        <td align="center"> <input  type="hidden" name="station" value="{{$selectstanum->stationnumber}}"  style="height:32px;font-size:12px;line-height:3em;">{{$selectstanum->stationnumber}}</td>
+                                        <td align="center"><input  type="hidden" name="time" value="{{$selectstanum->detime}}"  style="height:32px;font-size:12px;line-height:3em;">  {{$selectstanum->detime}}</td>
                                         <td align="center"><input class="button" type="submit" name="btticket" value="前往訂票"  style="height:32px;font-size:12px;line-height:3em;"></td>
                                     </tr>
                             @endif
@@ -93,8 +102,8 @@
                         @foreach ($selectstanum2 as $selectstanum22)
                             @if($selectstanum22->num===2)
                                     <tr>
-                                        <td align="center"> {{$selectstanum22->stationnumber}}</td>
-                                        <td align="center"> {{$selectstanum22->detime}}</td>
+                                        <td align="center"> <input  type="hidden" name="station" value="{{$selectstanum22->stationnumber}}"  style="height:32px;font-size:12px;line-height:3em;">{{$selectstanum22->stationnumber}}</td>
+                                        <td align="center"> <input  type="hidden" name="time" value="{{$selectstanum22->detime}}"  style="height:32px;font-size:12px;line-height:3em;">{{$selectstanum22->detime}}</td>
                                         <td align="center"><input class="button" type="submit" name="btticket" value="前往訂票"  style="height:32px;font-size:12px;line-height:3em;"></td>
                                     </tr>
                             @endif
@@ -104,6 +113,7 @@
 
 
                 </table>
+                </form>
             </div>
         </div>
     </div>
