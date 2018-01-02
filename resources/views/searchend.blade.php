@@ -39,9 +39,9 @@
             <form action="/ticket" method="post">
                 {{ csrf_field() }}
                 @foreach($posts as $post)
-                    <td> <input  type="hidden" name="year" value="{{$post->year}}"  style="height:32px;font-size:12px;line-height:3em;">年{{$post->year}}</td>
-                    <td><input  type="hidden" name="month" value="{{$post->month}}"  style="height:32px;font-size:12px;line-height:3em;">月{{$post->month}}</td>
-                    <td><input  type="hidden" name="day" value="{{$post->day}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->day}}</td>
+                    <td> <input  type="hidden" name="year" value="{{$post->year}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->year}}年</td>
+                    <td><input  type="hidden" name="month" value="{{$post->month}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->month}}月</td>
+                    <td><input  type="hidden" name="month" value="{{$post->day}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->day}}日</td>
                     <input  type="hidden" name="start" value="{{$post->start}}"  style="height:32px;font-size:12px;line-height:3em;">
                     <input  type="hidden" name="arrive" value="{{$post->arrive}}"  style="height:32px;font-size:12px;line-height:3em;">
 
@@ -50,7 +50,7 @@
                 <table>
                     <td>
                         @foreach ($sqlprice as $sqlpric)
-                            <font color="#FF5511"><strong>★ 票價一張：{{$sqlpric->price }}元 ★</strong> </font>
+                            <font color="#FF5511"><strong><input  type="hidden" name="price" value="{{$sqlpric->price}}"  style="height:32px;font-size:12px;line-height:3em;"><strong>★ 票價一張：{{$sqlpric->price }}元 ★</strong> </font>
                         @endforeach
                     </td>
 
