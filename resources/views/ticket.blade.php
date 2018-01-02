@@ -5,6 +5,38 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html><head>
+    <style>
+        .table7_3 table {
+            width:150%;
+            margin:15px 0
+        }
+        .table7_3 th {
+            background-color:#FF7631;
+            background:-o-linear-gradient(90deg, #FF7631, #F9B998);
+            background:-moz-linear-gradient( center top, #FF7631 5%, #F9B998 100% );
+            background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FF7631), color-stop(1, #F9B998) );
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF7631', endColorstr='#F9B998');
+            color:#000000
+        }
+        .table7_3,.table7_3 th,.table7_3 td
+        {
+            font-size:0.95em;
+            text-align:center;
+            padding:4px;
+            border:2px solid #F9D3C0;
+            border-collapse:collapse
+        }
+        .table7_3 tr:nth-child(odd){
+            background-color:#ffffff;
+            background:-o-linear-gradient(90deg, #ffffff, #f7fbfe);
+            background:-moz-linear-gradient( center top, #ffffff 5%, #f7fbfe 100% );
+            background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f7fbfe) );
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f7fbfe');
+        }
+        .table7_3 tr:nth-child(even){
+            background-color:#fdfdfd;
+        }
+    </style>
     <title>高鐵訂票系統</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,39 +114,46 @@
     <section>
         <table width="1200" class=table7_3>
             <tr>
+                <th>年</th><th>月</th><th>日</th><th>車次</th><th>出發時間</th><th>起站→</th><th>→終點</th><th>您所訂購的票數</th><th>單張票價</th><th>合計金額</th>
+            </tr>
+            <tr>
+
 
                 @foreach($posts as $post)
-                    <th>年{{$post->year}}</th>
-                    <th>月{{$post->month}}</th>
-                    <th>日{{$post->day}}</th>
-                @endforeach
-                @foreach($pos as $poss)
 
-                    <th>車次{{$poss->station}}</th>
-                    <th>出發時間{{$poss->time}}</th>
+                <td>{{$post->year}}年</td>
+                <td>{{$post->month}}月</td>
+                <td>{{$post->day}}日</td>
                 @endforeach
 
-
-
-                @foreach($station1 as $station2)<th>起站→終點{{$station2->stationname}}</th>@endforeach
-                @foreach( $ticketnum as  $ticketnum1)
-                    <th><input  type="hidden" name="quantity" value="{{ $ticketnum1->quantity}}"  style="height:32px;font-size:12px;line-height:3em;">您所訂購的票數 {{ $ticketnum1->quantity}}</th>
-                @endforeach
-                @foreach($money as $money1)
-                    <th><input  type="hidden" name="price" value="{{$money1->price}}"  style="height:32px;font-size:12px;line-height:3em;">單張票價{{$money1->price}}</th>
-                @endforeach
-
-                <th>  @foreach( $ticketnum as  $ticketnum1)
-                        @foreach($money as $money1)
-                        @php
-                            echo ('合計金額' );
-                                                    $w=$ticketnum1->quantity;$r=$money1->price;
-                                                   $wr=$w*$r ;
-                                                   echo ($wr);
-                        @endphp
+                    @foreach($pos as $poss)
+                    <td>{{$poss->station}}</td>
+                <td>{{$poss->time}}</td>
                     @endforeach
-                @endforeach
+                    @foreach($station1 as $station2)</th>
+                    <td>{{$station2->stationname}}</td>
+                    @endforeach
 
+                    @foreach( $ticketnum as  $ticketnum1)
+                        <td><input  type="hidden" name="quantity" value="{{ $ticketnum1->quantity}}"  style="height:32px;font-size:12px;line-height:3em;"> {{ $ticketnum1->quantity}}</td>
+                    @endforeach
+                    @foreach($money as $money1)
+                        <td><input  type="hidden" name="price" value="{{$money1->price}}"  style="height:32px;font-size:12px;line-height:3em;">{{$money1->price}}</td>
+                    @endforeach
+                    @foreach( $ticketnum as  $ticketnum1)
+                        @foreach($money as $money1)
+                            <td>@php
+
+                                                        $w=$ticketnum1->quantity;$r=$money1->price;
+                                                       $wr=$w*$r ;
+                                                       echo ($wr);
+                            @endphp
+                            </td>
+                        @endforeach
+                    @endforeach
+            </tr>
+        </table>
+      
 
 
                 <th>
@@ -151,30 +190,13 @@
 </div>
 <p>&nbsp;</p>
 
-<!-- Footer -->
-<footer id="footer">
-    <div class="inner">
-        <section>
-            <h2>Follow</h2>
-            <ul class="icons">
-                <li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
-                <li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
-            </ul>
-        </section>
-        <ul class="copyright">
-            <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-    </div>
-</footer>
-</div>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="assets/js/main.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/util.js"></script>
+<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
+<script src="js/main.js"></script>
 
 </body>
-</html><?
+</html>
