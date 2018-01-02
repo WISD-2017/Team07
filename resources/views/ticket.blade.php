@@ -48,7 +48,7 @@
     <div id="main">
         <div class="inner">
             <form action="/" method="POST">
-
+                {{ csrf_field() }}
                 <h1>高鐵班次查詢與訂票</h1>
         </div>
     </div>
@@ -83,21 +83,39 @@
         <table width="1200" class=table7_3>
             <tr>
 
-                    <th>年</th>
-                    <th>月</th>
-                    <th>日</th>
+                @foreach($posts as $post)
+                    <th>年{{$post->year}}</th>
+                    <th>月{{$post->month}}</th>
+                    <th>日{{$post->day}}</th>
+                @endforeach
+                @foreach($pos as $poss)
+
+                    <th>車次{{$poss->station}}</th>
+                    <th>出發時間{{$poss->time}}</th>
+                @endforeach
 
 
 
-                    <th>車次</th>
-                    <th>出發時間</th>
+                @foreach($station1 as $station2)<th>起站→終點{{$station2->stationname}}</th>@endforeach
+                @foreach( $ticketnum as  $ticketnum1)
+                    <th><input  type="hidden" name="quantity" value="{{ $ticketnum1->quantity}}"  style="height:32px;font-size:12px;line-height:3em;">您所訂購的票數 {{ $ticketnum1->quantity}}</th>
+                @endforeach
+                @foreach($money as $money1)
+                    <th><input  type="hidden" name="price" value="{{$money1->price}}"  style="height:32px;font-size:12px;line-height:3em;">單張票價{{$money1->price}}</th>
+                @endforeach
+
+                <th>  @foreach( $ticketnum as  $ticketnum1)
+                        @foreach($money as $money1)
+                        @php
+                            echo ('合計金額' );
+                                                    $w=$ticketnum1->quantity;$r=$money1->price;
+                                                   $wr=$w*$r ;
+                                                   echo ($wr);
+                        @endphp
+                    @endforeach
+                @endforeach
 
 
-
-
-                    <th>您所訂購的票數 </th>
-
-                    <th>單張票價</th>
 
                 <th>
 
