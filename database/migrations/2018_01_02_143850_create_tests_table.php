@@ -15,6 +15,15 @@ class CreateTestsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('year');
+            $table->integer('month');
+            $table->integer('day');
+            $table->string('start');
+            $table->string('arrive');
+            $table->string('station');
+            $table->string('time');
+            $table->string('quantity');
+            $table->string('price');
             $table->timestamps();
         });
     }
