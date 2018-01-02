@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Ticket;
 use App\Ticketcar;
 use Illuminate\Http\Request;
-
+use DB;
 class TicketController extends Controller
 {
     /**
