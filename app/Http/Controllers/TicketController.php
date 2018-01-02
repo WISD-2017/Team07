@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ticketcar;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -13,7 +14,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $posts=Test::orderBy('created_at','DESC')->take(1)->get();
+        $posts=Ticketcar::orderBy('created_at','DESC')->take(1)->get();
         $data=['posts'=>$posts];
         return View('/ticket')
             ->with($data);
