@@ -81,19 +81,6 @@
     </div>
 
     <!-- Footer -->
-    <footer id="footer">
-        <div class="inner">
-            <section>
-                <h2>Follow</h2>
-                <ul class="icons">
-                    <li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
-                    <li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
-                </ul>
-            </section>
-
-        </div>
-    </footer>
 </div>
 <!-- Scripts -->
 <script src="js/jquery.min.js"></script>

@@ -10,13 +10,13 @@
 </head>
 <body>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<form name="form" method="POST" action="/auth/register">
+<form name="form" method="POST" action="{{ route('login') }}">
     {!! csrf_field() !!}
     <div id="wrapper">
 
         <!-- Header -->
         <header id="header">
-            <div class="inner">
+            <div class="inner">s
 
                 <!-- Logo --><!-- Nav -->
 
@@ -59,7 +59,7 @@
 
                 </ul>
                 <input name="actionOK" type="submit" id= "button" value="確定送出" />
-                <input name="rea" type="submit" id= "button" value="我已註冊過" onClick="location.href='login.php'" />
+                <input name="rea" type="submit" id= "button" value="我已註冊過" onClick="{{ url('/login') }}" />
             </div>
             <p>&nbsp;</p>
         </div>
@@ -69,20 +69,6 @@
 
         <!-- Footer -->
 
-
-        <footer id="footer">
-            <div class="inner">
-                <section>
-                    <h2>Follow</h2>
-                    <ul class="icons">
-                        <li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
-                        <li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
-                    </ul>
-                </section>
-
-            </div>
-        </footer>
     </div>
 
     <!-- Scripts -->
