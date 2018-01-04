@@ -27,12 +27,7 @@
     </header>
 
     <!-- Main -->
-    <div id="main">
-        <div class="inner">
-            <h1>高鐵班次查詢與訂票</h1>
-        </div>
-    </div>
-
+  
     <div id="footer" style="background-color:#ffffff">
         <div class="inner">
 
