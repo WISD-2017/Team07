@@ -167,7 +167,7 @@
 
 
 
-
+        <input type="submit" name="cannn" value="返回查詢" style="width:200px;height:40px;background-color:#FCDED0;">
 
         </form>
 

@@ -118,4 +118,9 @@ class TicketController extends Controller
         Ticketcar::destroy($id);
         return redirect()->route('ticket.index');
     }
+    public function back($id)
+    {
+        Ticketcar::destroy($id);
+        return redirect()->route('search.index');
+    }
 }
