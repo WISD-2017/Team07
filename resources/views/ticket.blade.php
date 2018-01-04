@@ -70,13 +70,7 @@
     </nav>
 
     <!-- Main -->
-    <div id="main">
-        <div class="inner">
-            <form action="/" method="POST">
-                {{ csrf_field() }}
-                <h1>高鐵班次查詢與訂票</h1>
-        </div>
-    </div>
+
 
 
     <!-- Main -->
@@ -92,11 +86,6 @@
 
 
 
-
-
-
-
-
         <div id="main">
             <div class="inner">
                 <ul class="actions">
@@ -104,6 +93,11 @@
 
                     </u1>
     <p>&nbsp;</p>
+    @foreach ($pos as $poss)
+        <form  action="{{ route('ticket.destroy', $poss->id) }}" method="post">
+            @endforeach
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
     <section>
         <table width="1200" class=table7_3>
             <tr>
@@ -171,8 +165,8 @@
 </u1>-->
 
 
-        <form method="post">
-            <input type="submit" name="can" value="取消本次訂票" style="width:200px;height:40px;background-color:#FCDED0;">
+
+        <input type="submit" name="can" value="取消本次訂票" style="width:200px;height:40px;background-color:#FCDED0;">
 
         </form>
 
