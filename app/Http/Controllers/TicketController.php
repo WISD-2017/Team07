@@ -114,6 +114,8 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ticket::destroy($id);
+        Ticketcar::destroy($id);
+        return redirect()->route('ticket.index');
     }
 }
