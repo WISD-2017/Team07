@@ -52,8 +52,7 @@
     <!-- Header -->
     <header id="header">
         <div class="inner">
-
-
+        </div>
     </header>
 
     <!-- Menu -->
@@ -89,13 +88,12 @@
         <div id="main">
             <div class="inner">
                 <ul class="actions">
+                </ul>
 
-
-                    </u1>
     <p>&nbsp;</p>
     @foreach ($pos as $poss)
-        <form  action="{{ route('ticket.destroy', $poss->id) }}" method="post">
-            @endforeach
+        <form  action="/ticket/{{$poss->id}}" method="post">
+    @endforeach
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
     <section>
@@ -108,17 +106,17 @@
 
                 @foreach($posts as $post)
 
-                <td>{{$post->year}}年</td>
-                <td>{{$post->month}}月</td>
-                <td>{{$post->day}}日</td>
+                    <td>{{$post->year}}年</td>
+                    <td>{{$post->month}}月</td>
+                    <td>{{$post->day}}日</td>
                 @endforeach
 
                     @foreach($pos as $poss)
-                    <td>{{$poss->station}}</td>
-                <td>{{$poss->time}}</td>
+                        <td>{{$poss->station}}</td>
+                        <td>{{$poss->time}}</td>
                     @endforeach
-                    @foreach($station1 as $station2)</th>
-                    <td>{{$station2->stationname}}</td>
+                    @foreach($station1 as $station2)
+                        <td>{{$station2->stationname}}</td>
                     @endforeach
 
                     @foreach( $ticketnum as  $ticketnum1)
@@ -141,41 +139,23 @@
                     @endforeach
             </tr>
         </table>
-
-
-
-                <th>
-
-
-
-
-
-                </th>
-
-            </tr>
-            <tr>
-
-
-
-            </tr>
-        </table>
-        <p>&nbsp;</p>
-    <!--<ul class="actions">
-
-  <font color="#000000"><strong>您所選擇的張數：</strong></font><li><span class="button disabled" ><? //echo $_SESSION["Quantity"] ; ?></span></li>
-</u1>-->
-
-
-
-        <input type="submit" name="cannn" value="返回查詢" style="width:200px;height:40px;background-color:#FCDED0;">
-
+    </section>
         </form>
 
-    </section>
+
+        @foreach ($pos as $poss)
+            <form  action="/back/{{$poss->id}}" method="post">
+
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+            <input type="submit" name="cannn" value="返回查詢" style="width:200px;height:40px;background-color:#FCDED0;">
+
+            </form>
+        @endforeach
     <p>&nbsp;</p>
 
 </div>
-</div>
+
 <p>&nbsp;</p>
 
 

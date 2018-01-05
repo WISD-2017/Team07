@@ -99,7 +99,7 @@
                                     <tr>
                                         <td align="center"> <input  type="hidden" name="station" value="{{$selectstanum22->stationnumber}}"  style="height:32px;font-size:12px;line-height:3em;">{{$selectstanum22->stationnumber}}</td>
                                         <td align="center"> <input  type="hidden" name="time" value="{{$selectstanum22->detime}}"  style="height:32px;font-size:12px;line-height:3em;">{{$selectstanum22->detime}}</td>
-                                        <td align="center"><input class="button" type="submit" name="btticket" value="前往訂票"  style="height:32px;font-size:12px;line-height:3em;"></td>
+                                        <td align="center"><input class="button" type="submit" name="btticket" value="前往訂票"  style="height:32px;font-size:12px;line-height:3em;"href="{{ url('/register') }}"></td>
                                     </tr>
                             @endif
                         @endforeach
