@@ -8,6 +8,9 @@
                 <div class="panel-heading">恭喜你登入成功囉!!!!歡迎使用我們的系統!!</div>
 
                 <div class="panel-body">
+
+                        <a href="{{ route('search.index') }}">回到查詢頁面</a>
+
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
