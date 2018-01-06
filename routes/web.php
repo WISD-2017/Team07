@@ -29,11 +29,3 @@ Route::delete('/back/{id}',['as' => 'ticket.back', 'uses' => 'TicketController@b
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('auth/login', 'LoginController@getLogin');
-Route::post('auth/login', 'LoginController@postLogin');
-Route::get('auth/logout', 'LoginController@getLogout');
-
-
-Route::get('/auth/register', 'RegisterController@getRegister');
-Route::post('auth/register', 'RegisterController@postRegister');
-Route::get('auth/register', 'RegisterController@storeRegister');

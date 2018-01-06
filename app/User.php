@@ -9,9 +9,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'tickets';
+    protected $table = 'users';
     protected $fillable = [
-        'idnumber', 'account', 'password',
+        'id', 'account','email', 'password',
     ];
 
     /**
