@@ -21,7 +21,7 @@ class CreateTicketcarsTable extends Migration
             $table->integer('day');
             $table->string('start');
             $table->string('arrive');
-
+            $table->string('name');
             $table->timestamps();
         });
     }

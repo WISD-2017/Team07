@@ -24,6 +24,7 @@ class CreateTestsTable extends Migration
             $table->string('time');
             $table->string('quantity');
             $table->string('price');
+            $table->string('name');
             $table->timestamps();
         });
     }

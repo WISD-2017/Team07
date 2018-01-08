@@ -14,5 +14,6 @@ class Ticketcar extends Model
         'day',
         'start',
         'arrive',
+        'name',
     ];
 }

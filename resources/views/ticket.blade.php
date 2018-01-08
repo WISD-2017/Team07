@@ -56,19 +56,8 @@
     </header>
 
     <!-- Menu -->
-    <nav id="menu">
 
-        <ul>
-            <li><a href="index.php">首頁</a></li>
-            <li><a href="search.php">高鐵</a></li>
-            <li><a href="aboutus.php">關於我們</a></li>
-            <!--<li><a href="generic.html">登入</a></li>-->
-            <!--<li><a href="generic.html">訂票紀錄</a></li>-->
-            <li><a href="cutser.php">線上客服</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main -->
+                        <!-- Main -->
 
 
 
@@ -98,6 +87,11 @@
             {{ method_field('DELETE') }}
     <section>
         <table width="1200" class=table7_3>
+            @foreach($name as $data66)
+
+            <tr>訂購人:{{$data66->name}}</tr>
+
+            @endforeach
             <tr>
                 <th>年</th><th>月</th><th>日</th><th>車次</th><th>出發時間</th><th>起站</th><th>終點</th><th>您所訂購的票數</th><th>單張票價</th><th>合計金額</th><th>取消此訂票</th>
             </tr>
@@ -148,10 +142,11 @@
 
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-            <input type="submit" name="cannn" value="返回查詢" style="width:200px;height:40px;background-color:#FCDED0;">
+            <input type="submit" name="cannn" value="返回首頁" style="width:200px;height:40px;background-color:#FCDED0;">
 
             </form>
         @endforeach
+
     <p>&nbsp;</p>
 
 </div>
@@ -165,6 +160,7 @@
 <script src="js/util.js"></script>
 <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 <script src="js/main.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 </html>

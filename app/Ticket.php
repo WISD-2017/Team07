@@ -17,5 +17,6 @@ class Ticket extends Model
         'time',
         'quantity',
         'price',
+        'name',
     ];
 }

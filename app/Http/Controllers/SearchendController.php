@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Ticketcar;
+use App\User;
 use DB;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class SearchendController extends Controller
      */
     public function index()
     {
+
         //查詢tests資料表資料
         $posts=Ticketcar::orderBy('created_at','DESC')->take(1)->get();
         $data=['posts'=>$posts];
@@ -54,12 +56,20 @@ class SearchendController extends Controller
 
         $selectstanumdata1 = compact('selectstanum1');
         $selectstanumdata2 = compact('selectstanum2');
+        //訂購人
+        //$name = DB::table('users')
+            //->select('name')->take(1)
+            //->get();
+       // $data5=['name'=>$name];
+        $name=User::orderBy('created_at','DESC')->take(1)->get();
+        $data5=['name'=>$name];
 
         return View('/searchend')
                ->with($data)
                ->with($pricedata)
                ->with($selectstanumdata1)
-               ->with($selectstanumdata2);
+               ->with($selectstanumdata2)
+               ->with($data5);
     }
 
     /**

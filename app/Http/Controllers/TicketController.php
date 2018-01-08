@@ -41,12 +41,21 @@ class TicketController extends Controller
             })
             ->get();
         $station = compact('station1');
+        //訂購人
+
+
+        $name=Ticket::orderBy('created_at','DESC')->take(1)->get();
+        $data6=['name'=>$name];
+
+
 
         return View('/ticket')
             ->with($data)
             ->with($data2)
             ->with($data3)
             ->with($data4)
+            ->with($data6)
+
             ->with($station);
     }
 
@@ -121,6 +130,7 @@ class TicketController extends Controller
     public function back($id)
     {
         Ticketcar::destroy($id);
-        return redirect()->route('search.index');
+        Ticket::destroy($id);
+        return redirect()->route('welcome.index');
     }
 }
