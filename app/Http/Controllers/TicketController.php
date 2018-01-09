@@ -16,61 +16,11 @@ class TicketController extends Controller
     public function index()
     {
         $login_name = Auth::user()->name;
-
-        $posts=Ticketcar::orderBy('created_at','DESC')->take(1)->get();
-        $data=['posts'=>$posts];
-
-        //$pos=Ticket::orderBy('created_at','DESC')->take(1)->get();
         $pos=Ticket::orderBy('created_at','DESC')->where('name', $login_name)->take(1)->get();
         $data4=['pos'=>$pos];
-
-        $ticketnum = DB::table('tickets')
-            ->select('quantity')
-            ->get();
-        $data2=['ticketnum'=>$ticketnum];
-
-        $money = DB::table('tickets')
-            ->select('price')
-            ->get();
-        $data3=['money'=>$money];
-        //
-        $station1=DB::table('ticketcars')
-            ->join('station', function($join)
-            {
-                $join->on('ticketcars.start', '=', 'station.SID1')
-                    ->orOn('ticketcars.arrive', '=', 'station.SID2')
-                    ->select('stationname.stationname');
-                //->on('tests.arrive', '=', 'station.SID2')
-                // ->select('stationname.stationname');
-            })
-            ->get();
-        $station = compact('station1');
-        //訂購人
-
-
-        $name=Ticket::orderBy('created_at','DESC')->take(1)->get();
-        $data6=['name'=>$name];
-
-
-
-        return View('/ticket')
-            ->with($data)
-            ->with($data2)
-            ->with($data3)
-            ->with($data4)
-            ->with($data6)
-
-            ->with($station);
+        return View('/ticket')->with($data4);
     }
 
-    public function tests()
-    {
-       $login_name = Auth::user()->name;
-        $pos=Ticket::orderBy('created_at','DESC')->where('name', $login_name)->take(1)->get();
-        $data4=['pos'=>$pos];
-        return View('/test')->with($data4);
-
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -140,10 +90,5 @@ class TicketController extends Controller
         Ticketcar::destroy($id);
         return redirect()->route('ticket.index');
     }
-    public function back($id)
-    {
-        Ticketcar::destroy($id);
-        Ticket::destroy($id);
-        return redirect()->route('welcome.index');
-    }
+
 }

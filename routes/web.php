@@ -25,7 +25,7 @@ Route::delete('/back/{id}',['as' => 'searchend.back', 'uses' => 'SearchendContro
 Route::get('/ticket',['as' => 'ticket.index', 'uses' => 'TicketController@index']);
 Route::post('/ticket',['as' => 'ticket.store', 'uses' => 'TicketController@store']);
 Route::delete('/ticket/{id}',['as' => 'ticket.destroy', 'uses' => 'TicketController@destroy']);
-Route::delete('/back/{id}',['as' => 'ticket.back', 'uses' => 'TicketController@back']);
+
 
 
 Auth::routes();
