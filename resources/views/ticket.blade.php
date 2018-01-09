@@ -66,6 +66,7 @@
         <div class="inner">
             <h1>高鐵訂票紀錄							</h1>
             <p>● 請您務必再次確認資料！</p>
+            <a href="{{ route('welcome.index') }}">回到首頁</a>
         </div>
     </div>
 
@@ -89,74 +90,63 @@
 
 
         <table width="1200" class=table7_3>
-            @foreach($name as $data66)
+            @foreach($pos as $data)
 
-            <tr>訂購人:{{$data66->name}}</tr>
-
-            @endforeach
-            <tr>
-                <th>年</th><th>月</th><th>日</th><th>車次</th><th>出發時間</th><th>起站</th><th>終點</th><th>您所訂購的票數</th><th>單張票價</th><th>合計金額</th><th>取消此訂票</th>
-            </tr>
-            <tr>
+            <tr>訂購人:{{$data->name}}</tr>
 
 
-                @foreach($posts as $post)
+                <tr>
+                    <th>年</th><th>月</th><th>日</th><th>車次</th><th>出發時間</th><th>起站</th><th>終點</th><th>您所訂購的票數</th><th>單張票價</th><th>合計金額</th><th>取消此訂票</th>
+                </tr>
+                <tr>
 
-                    <td>{{$post->year}}年</td>
-                    <td>{{$post->month}}月</td>
-                    <td>{{$post->day}}日</td>
-                @endforeach
+                    <form  action="/ticket/{{$data->id}}" method="post">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
 
-                    @foreach($pos as $poss)
-                        <td>{{$poss->station}}</td>
-                        <td>{{$poss->time}}</td>
-                    @endforeach
-                    @foreach($station1 as $station2)
-                        <td>{{$station2->stationname}}</td>
-                    @endforeach
 
-                    @foreach( $ticketnum as  $ticketnum1)
-                        <td><input  type="hidden" name="quantity" value="{{ $ticketnum1->quantity}}"  style="height:32px;font-size:12px;line-height:3em;"> {{ $ticketnum1->quantity}}</td>
-                    @endforeach
-                    @foreach($money as $money1)
-                        <td><input  type="hidden" name="price" value="{{$money1->price}}"  style="height:32px;font-size:12px;line-height:3em;">{{$money1->price}}</td>
-                    @endforeach
-                    @foreach( $ticketnum as  $ticketnum1)
-                        @foreach($money as $money1)
-                            <td>@php
 
-                                                        $w=$ticketnum1->quantity;$r=$money1->price;
-                                                       $wr=$w*$r ;
-                                                       echo ($wr);
+                        <td>{{$data->year}}年</td>
+                        <td>{{$data->month}}月</td>
+                        <td>{{$data->day}}日</td>
+
+                        <td>{{$data->station}}</td>
+                        <td>{{$data->time}}</td>
+                        <td>{{$data->start}}</td>
+                        <td>{{$data->arrive}}</td>
+                        <td>{{$data->quantity}}</td>
+                        <td>{{$data->price}}</td>
+
+
+
+
+                        <td>@php
+
+                                $w=$data->quantity;
+                                $r=$data->price;
+                               $wr=$w*$r ;
+                               echo ($wr);
                             @endphp
-                            </td>
-                        @endforeach
+                        </td>
+
+
+
+
+
                         <td><input type="submit" name="can" value="取消此訂票" style="width:200px;height:40px;background-color:#FCDED0;"></td>
-                    @endforeach
-            </tr>
+                    </form>
+                </tr>
         </table>
-    </section>
-        </form>
-
-
-        @foreach ($pos as $poss)
-            <form  action="/back/{{$poss->id}}" method="post">
-
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-            <input type="submit" name="cannn" value="返回首頁" style="width:200px;height:40px;background-color:#FCDED0;">
-
-            </form>
         @endforeach
-
-    <p>&nbsp;</p>
+    </section>
+            <p>&nbsp;</p>
 
 </div>
 
 <p>&nbsp;</p>
 
 
-<!-- Scripts -->
+            <!-- Scripts -->
 <script src="js/jquery.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/util.js"></script>
