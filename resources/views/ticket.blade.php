@@ -112,8 +112,9 @@
 
                         <td>{{$data->station}}</td>
                         <td>{{$data->time}}</td>
-                        <td>{{$data->start}}</td>
-                        <td>{{$data->arrive}}</td>
+                        @foreach($station1 as $station2)
+                            <td>{{$station2->stationname}}</td>
+                        @endforeach
                         <td>{{$data->quantity}}</td>
                         <td>{{$data->price}}</td>
 

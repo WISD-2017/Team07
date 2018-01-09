@@ -18,7 +18,22 @@ class TicketController extends Controller
         $login_name = Auth::user()->name;
         $pos=Ticket::orderBy('created_at','DESC')->where('name', $login_name)->take(1)->get();
         $data4=['pos'=>$pos];
-        return View('/ticket')->with($data4);
+
+        $station1=DB::table('ticketcars')
+            ->join('station', function($join)
+            {
+                $join->on('ticketcars.start', '=', 'station.SID1')
+                    ->orOn('ticketcars.arrive', '=', 'station.SID2')
+                    ->select('stationname.stationname');
+                //->on('tests.arrive', '=', 'station.SID2')
+                // ->select('stationname.stationname');
+            })
+            ->get();
+        $station = compact('station1');
+        return View('/ticket')
+            ->with($data4)
+            ->with($station);
+
     }
 
 
