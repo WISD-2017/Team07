@@ -33,10 +33,10 @@
 
             <form action="/ticket" method="post">
                 {{ csrf_field() }}
-                @foreach($name as $data55)
 
-                    <td><input  type="hidden" name="name" value="{{$data55->name}}"  style="height:32px;font-size:12px;line-height:3em;">訂購人:{{$data55->name }} </td>
-                @endforeach
+
+                    <td><input  type="hidden" name="name" value="{{$name}}"  style="height:32px;font-size:12px;line-height:3em;">訂購人:{{$name }} </td>
+
 
                 @foreach($posts as $post)
                     <td> <input  type="hidden" name="year" value="{{$post->year}}"  style="height:32px;font-size:12px;line-height:3em;">{{$post->year}}年</td>

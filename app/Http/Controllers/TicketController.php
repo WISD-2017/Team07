@@ -5,6 +5,7 @@ use App\Ticket;
 use App\Ticketcar;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 class TicketController extends Controller
 {
     /**
@@ -14,10 +15,13 @@ class TicketController extends Controller
      */
     public function index()
     {
+        $login_name = Auth::user()->name;
+
         $posts=Ticketcar::orderBy('created_at','DESC')->take(1)->get();
         $data=['posts'=>$posts];
 
-        $pos=Ticket::orderBy('created_at','DESC')->take(1)->get();
+        //$pos=Ticket::orderBy('created_at','DESC')->take(1)->get();
+        $pos=Ticket::orderBy('created_at','DESC')->where('name', $login_name)->take(1)->get();
         $data4=['pos'=>$pos];
 
         $ticketnum = DB::table('tickets')
@@ -57,6 +61,15 @@ class TicketController extends Controller
             ->with($data6)
 
             ->with($station);
+    }
+
+    public function tests()
+    {
+       $login_name = Auth::user()->name;
+        $pos=Ticket::orderBy('created_at','DESC')->where('name', $login_name)->take(1)->get();
+        $data4=['pos'=>$pos];
+        return View('/test')->with($data4);
+
     }
 
     /**

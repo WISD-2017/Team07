@@ -5,7 +5,7 @@ use App\Ticketcar;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
-
+use Auth;
 class SearchendController extends Controller
 {
     /**
@@ -61,7 +61,7 @@ class SearchendController extends Controller
             //->select('name')->take(1)
             //->get();
        // $data5=['name'=>$name];
-        $name=User::orderBy('created_at','DESC')->take(1)->get();
+        $name=Auth::user()->name;
         $data5=['name'=>$name];
 
         return View('/searchend')
