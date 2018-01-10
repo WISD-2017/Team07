@@ -85,6 +85,7 @@
                 <div class="links">
                     <a href="{{route('search.index')}}">進入查詢頁面</a>
                     <a href="https://github.com/">GitHub</a>
+                    <a href="{{route('ticket.index')}}">查看訂票紀錄</a>
                 </div>
             </div>
         </div>
