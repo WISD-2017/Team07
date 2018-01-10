@@ -7,7 +7,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-請先下載資料庫hightrain https://drive.google.com/file/d/19VP8oigMW3bgaJX8tvnIhGgHoEiRq4-r/view?usp=sharing
+請先建立資料庫名稱為hightrain
+再下載資料庫hightrain https://drive.google.com/file/d/19VP8oigMW3bgaJX8tvnIhGgHoEiRq4-r/view?usp=sharing
 復原完後cmder打上artisan migrate
 即可使用此系統~
 ## About Laravel
